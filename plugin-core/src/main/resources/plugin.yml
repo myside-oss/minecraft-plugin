@@ -1,6 +1,6 @@
-main: "@plugin.main@"
+main: @plugin.main@
 
-name: "@plugin.name@"
+name: @plugin.name@
 version: "@plugin.version@"
 description: "@plugin.description@"
 
