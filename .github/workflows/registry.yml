@@ -1,11 +1,10 @@
-name: Publish release to Github
+name: Publish to Github Packages
 
-on:
-  push:
-    branches:
-      - master
-    tags:
-      - '**'
+push:
+  branches:
+    - master
+  tags:
+    - '**'
 
 jobs:
   build:
@@ -21,8 +20,7 @@ jobs:
         run: ./gradlew test
       - name: Assemble with Gradle
         run: ./gradlew assemble
-      - name: Release
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "plugin-core/build/libs/*.jar"
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish to Registry
+        run: ./gradlew publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
