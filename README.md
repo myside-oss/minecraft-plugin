@@ -39,9 +39,9 @@ When initializing gradle, there will automatically be created a
 directory called `server` with the latest version of paperspigot in. 
 
 [Gradle]: https://www.gradle.org/
-[Homepage]: https://github.com/myside-oos/minecraft-plugin/
+[Homepage]: https://github.com/myside-oss/minecraft-plugin/
 [IntelliJ]: https://www.jetbrains.com/idea/
-[Source]: https://github.com/myside-oos/minecraft-plugin/
-[Issues]: https://github.com/myside-oos/minecraft-plugin/issues/
+[Source]: https://github.com/myside-oss/minecraft-plugin/
+[Issues]: https://github.com/myside-oss/minecraft-plugin/issues/
 [MIT License]: https://www.tldrlegal.com/license/mit-license
-[Javadocs]: https://myside-oos.github.io/minecraft-plugin/
+[Javadocs]: https://myside-oss.github.io/minecraft-plugin/
