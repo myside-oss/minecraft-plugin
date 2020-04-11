@@ -1,10 +1,11 @@
 name: Publish to Github Packages
 
-push:
-  branches:
-    - master
-  tags:
-    - '**'
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - '**'
 
 jobs:
   build:
