@@ -27,8 +27,12 @@ publishing {
     }
 
     publications {
-        gpr(MavenPublication) {
-            from(components.java)
+        maven(MavenPublication) {
+            groupId = rootProject.group
+            artifactId = rootProject.name + "-api"
+            version = rootProject.version
+
+            from components.java
         }
     }
 }
