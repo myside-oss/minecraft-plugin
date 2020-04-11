@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/minecraft-library.iml" filepath="$PROJECT_DIR$/.idea/modules/minecraft-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/plugin-api/minecraft-library.plugin-api.iml" filepath="$PROJECT_DIR$/.idea/modules/plugin-api/minecraft-library.plugin-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/plugin-core/minecraft-library.plugin-core.iml" filepath="$PROJECT_DIR$/.idea/modules/plugin-core/minecraft-library.plugin-core.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,10 @@
+main: "@plugin.main@"
+
+name: "@plugin.name@"
+version: "@plugin.version@"
+description: "@plugin.description@"
+
+author: MySide
+website: @plugin.repository@
+
+api-version: @plugin.api@

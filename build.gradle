@@ -1,0 +1,49 @@
+project(':plugin-api') {
+    apply plugin: 'java'
+
+    repositories {
+        maven {
+            url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+            content {
+                includeGroup 'org.bukkit'
+                includeGroup 'org.spigotmc'
+            }
+        }
+        maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+
+    dependencies {
+        compileOnly group: 'org.spigotmc', name: 'spigot-api', version: findProperty("spigot.version")
+    }
+}
+
+project(':plugin-core') {
+    apply plugin: 'java'
+
+    apply from: '../gradle/minecraft.gradle'
+
+    archivesBaseName = rootProject.name
+
+    jar {
+        from {
+            configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        }
+    }
+
+    repositories {
+        maven {
+            url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+
+            content {
+                includeGroup 'org.bukkit'
+                includeGroup 'org.spigotmc'
+            }
+        }
+        maven { url = 'https://oss.sonatype.org/content/repositories/snapshots' }
+    }
+
+    dependencies {
+        compileOnly group: 'org.spigotmc', name: 'spigot-api', version: findProperty("spigot.version")
+    }
+}

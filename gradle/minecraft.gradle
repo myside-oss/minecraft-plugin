@@ -1,0 +1,58 @@
+import org.apache.tools.ant.filters.*
+
+apply plugin: 'java'
+
+// Replace tokens in the plugin.yml to gradle properties.
+processResources {
+    filter ReplaceTokens, tokens: [
+            "plugin.main"       : rootProject.findProperty("plugin.main"),
+            "plugin.name"       : rootProject.findProperty("plugin.name"),
+            "plugin.version"    : rootProject.version,
+            "plugin.description": rootProject.findProperty("plugin.description"),
+            "plugin.repository" : "https://github.com/myside-oss/" + rootProject.findProperty("plugin.repository"),
+            "plugin.api"        : rootProject.findProperty("plugin.api"),
+    ]
+}
+
+// Create plugin .jar from gradle build.
+task createPlugin(type: Copy) {
+    from jar
+    into new File(rootProject.projectDir, 'server/plugins/')
+}
+
+// Bind createPlugin to build process.
+build.dependsOn(createPlugin)
+
+// Issue: due to issue with Intellij only runnning classes when building project we will bind those tasks too.
+classes.finalizedBy(createPlugin)
+
+// Start server task for debugging.
+task startServer(type: JavaExec) {
+    main "-jar"
+    workingDir new File(rootProject.projectDir, "server")
+    standardInput System.in
+    args = [
+            new File(rootProject.projectDir, "server/paperspigot.jar"),
+            "-W",
+            "worlds",
+            "nogui"
+    ]
+    jvmArgs = ["-Dcom.mojang.eula.agree=true"]
+}
+
+// Download latest version of Paper Spigot & create a server folder.
+task createServer {
+    def f = new File(rootProject.projectDir, 'server/paperspigot.jar')
+    f.parentFile.mkdirs()
+    if (!f.exists()) {
+        URLConnection urlConnection = new URL('https://papermc.io/ci/job/Paper-1.15/lastSuccessfulBuild/artifact/paperclip.jar').openConnection();
+        urlConnection.addRequestProperty("User-Agent", "Mozilla");
+        urlConnection.setReadTimeout(5000);
+        urlConnection.setConnectTimeout(5000);
+
+        f.withOutputStream { it << urlConnection.inputStream }
+    }
+}
+
+// Bind createServer to initial process, when cloning repository.
+rootProject.init.finalizedBy(createServer)
