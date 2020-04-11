@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"org.myside.template.api","c":"Template","l":"Template()","url":"%3Cinit%3E()"},{"p":"org.myside.template.api","c":"Template","l":"test()"}]
