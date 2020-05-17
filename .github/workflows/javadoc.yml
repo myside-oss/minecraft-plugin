@@ -18,8 +18,14 @@ jobs:
         with:
           java-version: 11
       - name: Run tests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORG_TOKEN: ${{ secrets.ORG_TOKEN }}
         run: ./gradlew test
       - name: Generate javadocs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORG_TOKEN: ${{ secrets.ORG_TOKEN }}
         run: ./gradlew javadoc
       - name: Publish javadocs to Github pages
         uses: JamesIves/github-pages-deploy-action@master
