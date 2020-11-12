@@ -45,7 +45,7 @@ task createServer {
     def f = new File(rootProject.projectDir, 'server/paperspigot.jar')
     f.parentFile.mkdirs()
     if (!f.exists()) {
-        URLConnection urlConnection = new URL('https://papermc.io/ci/job/Paper-1.15/lastSuccessfulBuild/artifact/paperclip.jar').openConnection();
+        URLConnection urlConnection = new URL('https://papermc.io/ci/job/Paper-1.16/lastSuccessfulBuild/artifact/paperclip.jar').openConnection();
         urlConnection.addRequestProperty("User-Agent", "Mozilla");
         urlConnection.setReadTimeout(5000);
         urlConnection.setConnectTimeout(5000);
